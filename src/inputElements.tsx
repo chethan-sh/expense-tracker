@@ -18,11 +18,25 @@ export const Elements=[
     //     property:{type:"number"},
     // },
     {
-        element:"button",
-        text:"credit",
-        name:"credit",
-        onClick:"()=>this.props.addTransactionDetails()",
+        element:'label',
+        text:'Enter transaction',
     },
+    {
+        element:'input',
+        type:'text',
+    },
+    {
+        element:'label',
+        text:'Enter transaction',
+    },
+    {
+        element:'input',
+        type:'number',
+    },
+    {
+        element:'button',
+        text:'Add transaction'
+    }
     // {
     //     element:"button",
     //     text:"Add transaction",

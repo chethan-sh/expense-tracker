@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Elements} from '../inputElements'
 import { Heading } from './heading'
 import {IaddTransactionProp} from './interfaces'
 import {IstateTransactionDetails} from './interfaces'
@@ -41,5 +42,36 @@ export class InputTransactionDetailes extends Component<IaddTransactionProp,Ista
     )
   }
 }
+
+// interface k{
+//   handleDataSubmit:()=>void
+// }
+// export  class CreateUI extends Component<k,{}> {
+//   constructor(props:k) {
+//     super(props)
+//   }
+//   render() {
+//     const {handleDataSubmit}:any=this.props;
+//     let arr:any=[];
+//     Elements.forEach((obj:any)=>{
+//       let ele;
+//       if(obj.element==='label') {
+//         ele=(<p>{obj.text}</p>)
+//       } else if(obj.element==='input'){
+//         ele=(<input type={obj.type}></input>)
+//       } else if(obj.element==='button') {
+//         ele=(<button onClick={()=>handleDataSubmit}>{obj.text}</button>)
+//       }
+//       arr.push(ele);
+//     })
+//     console.log(arr);
+//     return (
+//       <div>
+//         {arr}
+//       </div>
+//     )
+//   }
+// }
+
 
 
