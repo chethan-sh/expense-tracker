@@ -1,38 +1,60 @@
-.App {
+body{
+  background-color: rgb(243, 246, 248);
+}
+.expenseTracker{
   text-align: center;
+  width:25%;
+  padding: 10px;
+  height: fit-content;
+  margin: 20px auto 0px auto;
+  box-shadow: 2px 2px rgb(127, 199, 228);
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.expenseTracker h3{
+  margin: 0px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.IncomeExpenseInfoDiv{
+  background-color: white;
+  box-shadow: 1px 1px rgb(78, 78, 78);
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
+  margin-bottom: 30px;
 }
-
-.App-link {
-  color: #61dafb;
+.IncomeExpenseInfoDiv p,h4{
+  margin:0px;
+  font-weight: 700;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.incomeClass,.expenseClass{
+  width:50%;
+  padding: 10px;
+}
+.incomeClass{
+  border-right: 2px solid rgb(199, 191, 191);
+}
+.heading{
+  font-weight: 700;
+  font-size: 20px;
+  text-align: left;
+  border-bottom:2px solid rgb(234, 224, 165);
+  margin-bottom: 10px;
+}
+.transactionHistoryList{
+  margin-bottom: 15px;
+}
+.transactionCredit,.transactionDebit{
+  background-color: white;
+  box-shadow: 1px 1px rgb(78, 78, 78);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.transactionDebit{
+  border-right: 5px solid red;
+}
+.transactionCredit{
+  border-right: 5px solid rgb(8, 112, 27);
+}
+.inputTransactionDetails{
+  text-align: left;
 }
