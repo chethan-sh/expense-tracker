@@ -8,20 +8,33 @@ export  class IncomeExpenseInfo extends Component<IincomeExpense,{}> {
   render() {
     const {income,expense,balance}=this.props;
     return (
-      <div className="IncomeExpenseInfo">
-          <h4>YOUR BALANCE</h4>
-          <p style={{color:"green"}}>{balance}</p>
           <div className='IncomeExpenseInfoDiv'>
-              <div className="incomeClass">
-                  <p>INCOME</p>
-                  <p style={{color:"green"}}>Rs:{income}</p>
-              </div>
-              <div className="expenseClass">
-                  <p>EXPENSE</p>
-                  <p style={{color:"red"}}>Rs:{expense}</p>
-              </div>
+            <IncomeExpense value={income} type='INCOME' classname='incomeClass' ></IncomeExpense>
+            <IncomeExpense value={expense} type='EXPENSE' classname='expenseClass' ></IncomeExpense>
           </div>
+    )
+  }
+}
+interface IncomeExpenseProps{
+  value:number,
+  type:string,
+  classname:string,
+}
+export class IncomeExpense extends Component<IncomeExpenseProps,{}> {
+  constructor(props:IncomeExpenseProps) {
+    super(props)
+  }
+  render() {
+    const {value,type,classname}=this.props;
+    const color:string=(type=='INCOME')?'green':'red';
+    return (
+      <div className={classname}>
+          <p>{type}</p>
+          <p style={{color:color}}>Rs:{value}</p>
       </div>
     )
   }
 }
+
+
+

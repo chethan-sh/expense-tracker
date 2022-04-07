@@ -23,6 +23,11 @@ body{
   margin:0px;
   font-weight: 700;
 }
+.inputTransactionDetails button{
+padding: 8px;
+color:white;
+background-color: rgb(91, 91, 252);
+}
 .incomeClass,.expenseClass{
   width:50%;
   padding: 10px;
@@ -57,4 +62,12 @@ body{
 }
 .inputTransactionDetails{
   text-align: left;
+}
+.balance p{
+  margin: 0px;
+  font-size: 22px;
+  font-weight: 600;
+}
+.balance {
+  padding: 10px;
 }

@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
+import {IheadindgProps} from './interfaces'
 
-interface IheadindgProps{
-    headingtext:string;
-}
 export class Heading extends Component<IheadindgProps,{}> {
   render() {
       const {headingtext} = this.props;

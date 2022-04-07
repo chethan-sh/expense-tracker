@@ -7,17 +7,15 @@ import { IncomeExpenseInfo } from './incomeExpenseInfo'
 import {transactionItem} from './interfaces'
 import '../App.css';
 import { IincomeExpense } from './interfaces'
+import { IexpenseTrackerState } from './interfaces'
+import {Balance} from './balance';
 
-interface IincomeExpenseState extends IincomeExpense{
-  transactionList: transactionItem[],
-} 
-
-export class ExpenseTracker extends React.Component<{},IincomeExpenseState> {
+export class ExpenseTracker extends React.Component<{},IexpenseTrackerState> {
   constructor(props:{}){
     super(props)
     this.addTransactionDetails=this.addTransactionDetails.bind(this);
     this.getTransactionDetails=this.getTransactionDetails.bind(this);
-    this.vaildateAddingTransaction=this.vaildateAddingTransaction.bind(this);
+    this.vaildateTransactionDetails=this.vaildateTransactionDetails.bind(this);
     this.calculateIncomeExpense=this.calculateIncomeExpense.bind(this);
     this.state={
       balance:0,
@@ -27,7 +25,7 @@ export class ExpenseTracker extends React.Component<{},IincomeExpenseState> {
     }
   }
 
-  vaildateAddingTransaction({transactionType,transactionAmount,transactionName}:transactionItem){
+  vaildateTransactionDetails({transactionType,transactionAmount,transactionName}:transactionItem){
     const balance=this.state.balance;
     if(transactionType ==='debit' && ((balance-transactionAmount)<0)) {
       alert('LOw Balance cant add data');
@@ -39,15 +37,14 @@ export class ExpenseTracker extends React.Component<{},IincomeExpenseState> {
   addTransactionDetails(transactionType:string,transactionAmount:number,transactionName:string){
       transactionArr.push(
         {
-          transactionName:transactionName,
-          transactionType:transactionType,
-          transactionAmount:transactionAmount,
+          transactionName,
+          transactionType,
+          transactionAmount,
         });
         alert('added transaction sucessfully');
         this.calculateIncomeExpense(transactionType,transactionAmount);
   }
   
-
  getTransactionDetails(){
     let transactionInputElements=(document.querySelectorAll('.input'));
     let transactionItem={
@@ -80,10 +77,11 @@ export class ExpenseTracker extends React.Component<{},IincomeExpenseState> {
     return (
       <div className='expenseTracker'>
         <h3>Expense Tracker</h3>
+        <Balance balance={balance}></Balance>
         <IncomeExpenseInfo balance={balance} income={income} expense={expense}></IncomeExpenseInfo>
         <TransactionHistoryList transactionList={transactionList}></TransactionHistoryList>
         <InputTransactionDetailes 
-            vaildateAddingTransaction={this.vaildateAddingTransaction}
+            vaildateTransactionDetails={this.vaildateTransactionDetails}
             getTransactionDetails={this.getTransactionDetails}>
         </InputTransactionDetailes>
       </div>

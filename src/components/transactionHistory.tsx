@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import { Heading } from './heading'
 import TransactionHistoryItem from './transactionItem'
+import {ItransactionHistoryProps} from './interfaces'
 import {transactionItem} from './interfaces'
-
-interface ItransactionHistoryProps{
-    transactionList:transactionItem[]
-}
 
 export class TransactionHistoryList extends React.Component<ItransactionHistoryProps> {
     constructor(props:ItransactionHistoryProps) {
