@@ -1,14 +1,13 @@
 
 import React, { Component } from 'react'
-import { TransactionHistoryList } from './transactionHistory'
+import { TransactionHistory } from './transactionHistory'
 import { InputTransactionDetailes } from './inputTransaction'
 import { transactionArr } from '../transactionArr'
-import { IncomeExpenseInfo } from './incomeExpenseInfo'
 import {transactionItem} from './interfaces'
 import '../App.css';
 import { IincomeExpense } from './interfaces'
 import { IexpenseTrackerState } from './interfaces'
-import {Balance} from './balance';
+import {Data} from './data'
 
 export class ExpenseTracker extends React.Component<{},IexpenseTrackerState> {
   constructor(props:{}){
@@ -27,7 +26,13 @@ export class ExpenseTracker extends React.Component<{},IexpenseTrackerState> {
 
   vaildateTransactionDetails({transactionType,transactionAmount,transactionName}:transactionItem){
     const balance=this.state.balance;
-    if(transactionType ==='debit' && ((balance-transactionAmount)<0)) {
+    console.log(transactionAmount+"jjj");
+    if(transactionName ==='' || (!isNaN(+transactionName)) ) {
+      alert("invalid transaction Name");
+    } else if(transactionAmount<=0 ) {
+      alert("invalid transaction amount");
+    }
+    else if(transactionType ==='debit' && ((balance-transactionAmount)<0)) {
       alert('LOw Balance cant add data');
     } else {
       this.addTransactionDetails(transactionType,transactionAmount,transactionName);
@@ -55,11 +60,11 @@ export class ExpenseTracker extends React.Component<{},IexpenseTrackerState> {
     return transactionItem;
   }
 
-  calculateIncomeExpense(transactionType:string,transactionAmount:number){
+calculateIncomeExpense(transactionType:string,transactionAmount:number){
     let {income,expense,balance}:IincomeExpense= this.state;
     if(transactionType ==='credit') {
       income=income+transactionAmount;
-    } else if(transactionType === 'debit') {
+    } else {
       expense=expense+transactionAmount;
     }
     balance=income-expense;
@@ -71,15 +76,17 @@ export class ExpenseTracker extends React.Component<{},IexpenseTrackerState> {
     })
   }
   
-
   render() {
     const {balance,income,expense,transactionList}=this.state;
     return (
       <div className='expenseTracker'>
-        <h3>Expense Tracker</h3>
-        <Balance balance={balance}></Balance>
-        <IncomeExpenseInfo balance={balance} income={income} expense={expense}></IncomeExpenseInfo>
-        <TransactionHistoryList transactionList={transactionList}></TransactionHistoryList>
+        <h3 style={{color:'black'}}>Expense Tracker</h3>
+        <div className='IncomeExpenseInfoDiv'>
+            <Data type='Balance' value={balance} ></Data>
+            <Data type='INCOME' value={income} ></Data>
+            <Data type='EXPENSE' value={expense} ></Data>
+        </div>
+        <TransactionHistory transactionList={transactionList}></TransactionHistory>
         <InputTransactionDetailes 
             vaildateTransactionDetails={this.vaildateTransactionDetails}
             getTransactionDetails={this.getTransactionDetails}>

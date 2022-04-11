@@ -27,6 +27,6 @@ export interface IaddTransactionProp{
 export interface IstateTransactionDetails{
   transactionType:string;
 }
-export interface ItransactionHistoryProps{
-    transactionList:transactionItem[]
-}
+ export interface ItransactionHistoryProps{
+    transactionList:transactionItem[],
+ }

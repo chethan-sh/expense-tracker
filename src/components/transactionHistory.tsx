@@ -4,7 +4,7 @@ import TransactionHistoryItem from './transactionItem'
 import {ItransactionHistoryProps} from './interfaces'
 import {transactionItem} from './interfaces'
 
-export class TransactionHistoryList extends React.Component<ItransactionHistoryProps> {
+export class TransactionHistory extends React.Component<ItransactionHistoryProps> {
     constructor(props:ItransactionHistoryProps) {
         super(props)
     }
@@ -17,7 +17,7 @@ export class TransactionHistoryList extends React.Component<ItransactionHistoryP
       const {transactionList} = this.props;
       let latestTransaction=this.getLatestTransaction(transactionList);
     return (
-      <div className="transactionHistoryList">
+      <div className="transactionHistory">
           <Heading headingtext='History'></Heading>
           {
                 latestTransaction.map((transactionItem)=>{

@@ -3,7 +3,8 @@ body{
 }
 .expenseTracker{
   text-align: center;
-  width:25%;
+  margin-top: 60px;
+  width:30%;
   padding: 10px;
   height: fit-content;
   margin: 20px auto 0px auto;
@@ -13,13 +14,12 @@ body{
   margin: 0px;
 }
 .IncomeExpenseInfoDiv{
-  background-color: white;
-  box-shadow: 1px 1px rgb(78, 78, 78);
   display: flex;
   justify-content: space-around;
   margin-bottom: 30px;
+  margin-top:50px;
 }
-.IncomeExpenseInfoDiv p,h4{
+.IncomeExpenseInfoDiv p{
   margin:0px;
   font-weight: 700;
 }
@@ -28,12 +28,9 @@ padding: 8px;
 color:white;
 background-color: rgb(91, 91, 252);
 }
-.incomeClass,.expenseClass{
-  width:50%;
-  padding: 10px;
-}
-.incomeClass{
-  border-right: 2px solid rgb(199, 191, 191);
+.inputTransactionDetails input{
+  margin-right: 30px;
+  padding: 5px;
 }
 .heading{
   font-weight: 700;
@@ -42,7 +39,7 @@ background-color: rgb(91, 91, 252);
   border-bottom:2px solid rgb(234, 224, 165);
   margin-bottom: 10px;
 }
-.transactionHistoryList{
+.transactionHistory{
   margin-bottom: 15px;
 }
 .transactionCredit,.transactionDebit{
@@ -63,11 +60,12 @@ background-color: rgb(91, 91, 252);
 .inputTransactionDetails{
   text-align: left;
 }
-.balance p{
-  margin: 0px;
-  font-size: 22px;
-  font-weight: 600;
-}
-.balance {
+.data{
+  border-radius: 10px;
   padding: 10px;
+  margin-right: 20px;
+  background-color: rgba(192, 247, 137, 0.648);
+  border:1px solid rgba(59, 250, 142, 0.959);
 }
+
+

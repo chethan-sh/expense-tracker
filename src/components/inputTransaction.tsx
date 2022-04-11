@@ -33,7 +33,7 @@ export class InputTransactionDetailes extends Component<IaddTransactionProp,Ista
       const {transactionType}=this.state;
     return (
       <div className='inputTransactionDetails'>
-          <Heading headingtext="Add new transaction"></Heading>
+              <Heading headingtext="Add new transaction"></Heading>
               <input placeholder='transaction name' className='input'  type='text'/>
               <input placeholder='transaction amount' className='input' type="number"/>
               <button id='type' name={transactionType} onClick={this.toggleTransactionType}>{transactionType}</button>
