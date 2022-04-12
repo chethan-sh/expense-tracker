@@ -3,7 +3,8 @@ import { ITransactionItem } from "./interfaces";
 import { Heading } from "./heading";
 
 const amountType = {
-  type: "credit"
+  credit: "credit",
+  debit: "debit"
 };
 interface Iinput {
   balance: number;
@@ -16,17 +17,22 @@ export class InputTransactionDetailes extends Component<
   constructor(props: Iinput) {
     super(props);
     this.handleOnchange = this.handleOnchange.bind(this);
+    this.clearInputFields = this.clearInputFields.bind(this);
     this.state = {
-      transactionType: amountType.type,
+      transactionType: amountType.credit,
       transactionAmount: 0,
       transactionName: ""
     };
   }
 
+  clearInputFields() {
+    this.setState({ transactionAmount: 0, transactionName: "" });
+  }
+
   toggleTransactionType = () => {
     this.setState((prevState) => {
       let transactionType;
-      if (prevState.transactionType === amountType.type) {
+      if (prevState.transactionType === amountType.credit) {
         transactionType = "debit";
       } else {
         transactionType = "credit";
@@ -40,14 +46,17 @@ export class InputTransactionDetailes extends Component<
     transactionAmount,
     transactionName
   }: ITransactionItem) {
-    const { balance }: any = this.props;
+    const { balance }: { balance: number } = this.props;
     let validationStatus: boolean = false;
     if (transactionName === "" || !isNaN(+transactionName)) {
-      alert("invalid transaction Name");
+      alert("Invalid Transaction Name");
     } else if (transactionAmount <= 0) {
-      alert("invalid transaction amount");
-    } else if (transactionType === "debit" && balance - transactionAmount < 0) {
-      alert("LOw Balance cant add data");
+      alert("Invalid Transaction Amount");
+    } else if (
+      transactionType === amountType.debit &&
+      balance - transactionAmount < 0
+    ) {
+      alert("Low Balance Cant add Transaction");
     } else {
       validationStatus = true;
     }
@@ -66,7 +75,7 @@ export class InputTransactionDetailes extends Component<
 
   getTransactionDetails() {
     const { transactionType, transactionName, transactionAmount } = this.state;
-    let transactionItem = {
+    const transactionItem = {
       transactionType,
       transactionAmount,
       transactionName
@@ -79,46 +88,49 @@ export class InputTransactionDetailes extends Component<
     if (this.isValidationSuccessful(transactionItem)) {
       this.props.addTransactionDetails(transactionItem);
     }
+    this.clearInputFields();
   }
 
   render() {
     const { transactionType, transactionName, transactionAmount } = this.state;
     return (
-      <div className="inputTransactionDetails">
-        <Heading headingtext="Add transaction" />
-        <label>Transaction Name</label>
-        <input
-          name="transactionName"
-          value={transactionName}
-          placeholder="Name"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            this.handleOnchange(e)
-          }
-          className="input"
-          type="text"
-        />
-        <label>Transaction Amount</label>
-        <input
-          name="transactionAmount"
-          value={transactionAmount}
-          placeholder="transaction amount"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            this.handleOnchange(e)
-          }
-          className="input"
-          type="number"
-        />
-        <button
-          id="type"
-          name={transactionType}
-          onClick={this.toggleTransactionType}
-        >
-          {transactionType}
-        </button>
-        <button onClick={() => this.handleDataSubmit()}>
-          Add Transactions
-        </button>
-      </div>
+      <>
+        <div className="inputTransactionDetails">
+          <Heading headingtext="Add transaction" />
+          <label>Transaction Name</label>
+          <input
+            name="transactionName"
+            value={transactionName}
+            placeholder="Name"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              this.handleOnchange(e)
+            }
+            className="input"
+            type="text"
+          />
+          <label>Transaction Amount</label>
+          <input
+            name="transactionAmount"
+            value={transactionAmount}
+            placeholder="transaction amount"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              this.handleOnchange(e)
+            }
+            className="input"
+            type="number"
+          />
+          <button
+            id="type"
+            name={transactionType}
+            onClick={this.toggleTransactionType}
+          >
+            {transactionType}
+          </button>
+          <button onClick={() => this.handleDataSubmit()}>
+            Add Transactions
+          </button>
+        </div>
+      </>
     );
   }
 }

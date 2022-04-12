@@ -1,6 +1,4 @@
-import React from 'react';
-import { ExpenseTracker } from './components/expenseTracker';
-
+import { ExpenseTracker } from "./components/expenseTracker";
 
 function App() {
   return (

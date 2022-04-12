@@ -13,6 +13,7 @@
   color: rgba(71, 62, 62, 0.623);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: rgba(167, 146, 175, 0.219);
+  border: 1px solid rgb(221, 213, 213);
   border-radius: 8px;
 }
 .TrackerData {
@@ -29,14 +30,17 @@
   font-style: Verdana;
 }
 .inputTransactionDetails button {
-  padding: 8px;
+  padding: 7px;
+  font-size: 17px;
+  border: 1px solid rgb(14, 11, 11);
+  margin-right: 10px;
   color: white;
-  background-color: rgb(91, 91, 252);
+  background-color: rgba(248, 38, 10, 0.938);
 }
 .inputTransactionDetails input {
   width: 80%;
   padding: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .heading {
   font-weight: 600;
@@ -57,17 +61,19 @@
 .transactionCredit,
 .transactionDebit {
   background-color: white;
-  box-shadow: 1px 1px rgb(78, 78, 78);
   display: flex;
+  border-radius: 8px;
   justify-content: space-between;
   margin-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
 }
 .transactionDebit {
+  border: 1px solid rgba(245, 94, 94, 0.651);
   border-right: 5px solid red;
 }
 .transactionCredit {
+  border: 1px solid rgba(95, 240, 95, 0.692);
   border-right: 5px solid rgb(8, 112, 27);
 }
 .inputTransactionDetails {
@@ -103,6 +109,6 @@
   justify-content: space-between;
 }
 label {
-  color: rgb(160, 152, 152);
+  color: rgb(112, 104, 104);
   margin-bottom: 10px;
 }

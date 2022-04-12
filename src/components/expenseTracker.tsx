@@ -7,9 +7,8 @@ import "../App.css";
 import { ITrackerData } from "./interfaces";
 import { IExpenseTrackerState } from "./interfaces";
 import TrackerData from "./trackerData";
-import { Heading } from "./heading";
 const amountType = {
-  type: "credit"
+  credit: "credit"
 };
 
 export class ExpenseTracker extends Component<{}, IExpenseTrackerState> {
@@ -41,7 +40,7 @@ export class ExpenseTracker extends Component<{}, IExpenseTrackerState> {
 
   calculateIncomeExpense(transactionType: string, transactionAmount: number) {
     let { income, expense, balance }: ITrackerData = this.state;
-    if (transactionType === amountType.type) {
+    if (transactionType === amountType.credit) {
       income = income + transactionAmount;
     } else {
       expense = expense + transactionAmount;
@@ -58,20 +57,21 @@ export class ExpenseTracker extends Component<{}, IExpenseTrackerState> {
   render() {
     const { balance, income, expense, transactionList } = this.state;
     return (
-      <div className="expenseTracker">
-        <h3>Expense Tracker</h3>
-        <TrackerData balance={balance} income={income} expense={expense} />
-
-        <div className="change">
-          <InputTransactionDetailes
-            balance={balance}
-            addTransactionDetails={this.addTransactionDetails}
-          />
-          <TransactionHistory
-            transactionList={transactionList}
-          ></TransactionHistory>
+      <>
+        <div className="expenseTracker">
+          <h3>Expense Tracker</h3>
+          <TrackerData balance={balance} income={income} expense={expense} />
+          <div className="change">
+            <InputTransactionDetailes
+              balance={balance}
+              addTransactionDetails={this.addTransactionDetails}
+            />
+            <TransactionHistory
+              transactionList={transactionList}
+            ></TransactionHistory>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }

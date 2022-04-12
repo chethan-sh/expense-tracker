@@ -13,18 +13,23 @@ export class TransactionHistory extends Component<ITransactionHistoryProps> {
 
   render() {
     const { transactionList } = this.props;
-    let latestTransaction = this.getLatestTransaction(transactionList);
+    const latestTransaction = this.getLatestTransaction(
+      transactionList
+    ).reverse();
     return (
-      <div className="transactionHistory">
-        <Heading headingtext="Transaction History" />
-        {latestTransaction.map((transactionItem) => {
-          return (
-            <TransactionHistoryItem
-              {...transactionItem}
-            ></TransactionHistoryItem>
-          );
-        })}
-      </div>
+      <>
+        <div className="transactionHistory">
+          <Heading headingtext="Transaction History" />
+          {latestTransaction.map((transactionItem, index) => {
+            return (
+              <TransactionHistoryItem
+                key={index}
+                {...transactionItem}
+              ></TransactionHistoryItem>
+            );
+          })}
+        </div>
+      </>
     );
   }
 }

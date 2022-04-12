@@ -9,7 +9,6 @@ export interface ITrackerData {
   income: number;
   expense: number;
 }
-
 export interface IExpenseTrackerState extends ITrackerData {
   transactionList: ITransactionItem[];
 }

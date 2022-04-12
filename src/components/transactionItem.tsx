@@ -8,16 +8,18 @@ export default class TransactionHistoryItem extends Component<
   render() {
     const { transactionName, transactionAmount, transactionType } = this.props;
     return (
-      <div
-        className={
-          transactionType === "credit"
-            ? "transactionCredit"
-            : "transactionDebit"
-        }
-      >
-        <p>{transactionName}</p>
-        <p>{transactionAmount}</p>
-      </div>
+      <>
+        <div
+          className={
+            transactionType === "credit"
+              ? "transactionCredit"
+              : "transactionDebit"
+          }
+        >
+          <p>{transactionName}</p>
+          <p>{transactionAmount}</p>
+        </div>
+      </>
     );
   }
 }
