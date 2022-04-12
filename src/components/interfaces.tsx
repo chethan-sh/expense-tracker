@@ -1,28 +1,21 @@
-export {}
-
-export interface transactionItem{
-    transactionName:string;
-    transactionType:string;
-    transactionAmount:number;
-  }
-export interface IincomeExpense{
-    balance:number,
-    income:number,
-    expense:number,
-  }
-
-export interface IexpenseTrackerState extends IincomeExpense{
-    transactionList: transactionItem[],
-} 
-export interface IheadindgProps{
-    headingtext:string;
+export {};
+export interface ITransactionItem {
+  transactionName: string;
+  transactionType: string;
+  transactionAmount: number;
+}
+export interface ITrackerData {
+  balance: number;
+  income: number;
+  expense: number;
 }
 
-export interface IstateTransactionDetails{
-  transactionType:string;
-  transactionAmount:number,
-  transactionName:string
+export interface IExpenseTrackerState extends ITrackerData {
+  transactionList: ITransactionItem[];
 }
- export interface ItransactionHistoryProps{
-    transactionList:transactionItem[],
- }
+export interface IheadindgProps {
+  headingtext: string;
+}
+export interface ITransactionHistoryProps {
+  transactionList: ITransactionItem[];
+}

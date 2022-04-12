@@ -1,14 +1,23 @@
-import React, { Component } from 'react'
-import {transactionItem} from './interfaces'
+import React, { Component } from "react";
+import { ITransactionItem } from "./interfaces";
 
-export default class TransactionHistoryItem extends Component<transactionItem,{}> {
+export default class TransactionHistoryItem extends Component<
+  ITransactionItem,
+  {}
+> {
   render() {
-      const {transactionName,transactionAmount,transactionType}=this.props;
+    const { transactionName, transactionAmount, transactionType } = this.props;
     return (
-      <div className={(transactionType==='credit')?"transactionCredit":"transactionDebit"}>
-          <p>{transactionName}</p>
-          <p>{transactionAmount}</p>
+      <div
+        className={
+          transactionType === "credit"
+            ? "transactionCredit"
+            : "transactionDebit"
+        }
+      >
+        <p>{transactionName}</p>
+        <p>{transactionAmount}</p>
       </div>
-    )
+    );
   }
 }

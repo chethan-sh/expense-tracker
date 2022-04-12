@@ -1,48 +1,61 @@
-body{
-  background-color: rgb(243, 246, 248);
-}
-.expenseTracker{
+.expenseTracker {
   text-align: center;
-  margin-top: 60px;
-  width:30%;
+  width: 50%;
   padding: 10px;
   height: fit-content;
-  margin: 20px auto 0px auto;
-  box-shadow: 2px 2px rgb(127, 199, 228);
+  margin: 50px auto 0px auto;
 }
-.expenseTracker h3{
+.expenseTracker h3 {
   margin: 0px;
-}
-.TrackerData{
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 30px;
-  margin-top:50px;
-}
-.TrackerData p{
-  margin:0px;
-  font-weight: 700;
-}
-.inputTransactionDetails button{
-padding: 8px;
-color:white;
-background-color: rgb(91, 91, 252);
-}
-.inputTransactionDetails input{
-  margin-right: 30px;
-  padding: 5px;
-}
-.heading{
-  font-weight: 700;
-  font-size: 20px;
   text-align: left;
-  border-bottom:2px solid rgb(234, 224, 165);
+  padding: 30px;
+  width: 90%;
+  color: rgba(71, 62, 62, 0.623);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgba(167, 146, 175, 0.219);
+  border-radius: 8px;
+}
+.TrackerData {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+.TrackerData p {
+  margin: 0px;
+  font-weight: 400;
+  font-size: 20px;
+  color: rgba(31, 29, 29, 0.596);
+  font-style: Verdana;
+}
+.inputTransactionDetails button {
+  padding: 8px;
+  color: white;
+  background-color: rgb(91, 91, 252);
+}
+.inputTransactionDetails input {
+  width: 80%;
+  padding: 5px;
   margin-bottom: 10px;
 }
-.transactionHistory{
-  margin-bottom: 15px;
+.heading {
+  font-weight: 600;
+  font-size: 20px;
+  text-align: left;
+  color: rgba(31, 29, 29, 0.596);
+  border-bottom: 2px solid rgb(234, 224, 165);
+  margin-bottom: 10px;
 }
-.transactionCredit,.transactionDebit{
+.transactionHistory {
+  text-align: left;
+  border: 1px solid rgba(114, 113, 113, 0.473);
+  border-radius: 7px;
+  width: 55%;
+  box-sizing: border-box;
+  padding: 30px;
+}
+.transactionCredit,
+.transactionDebit {
   background-color: white;
   box-shadow: 1px 1px rgb(78, 78, 78);
   display: flex;
@@ -51,21 +64,45 @@ background-color: rgb(91, 91, 252);
   padding-left: 10px;
   padding-right: 10px;
 }
-.transactionDebit{
+.transactionDebit {
   border-right: 5px solid red;
 }
-.transactionCredit{
+.transactionCredit {
   border-right: 5px solid rgb(8, 112, 27);
 }
-.inputTransactionDetails{
+.inputTransactionDetails {
   text-align: left;
+  border: 1px solid rgba(114, 113, 113, 0.473);
+  padding: 30px;
+  height: 300px;
+  border-radius: 7px;
+  width: 40%;
+  box-sizing: border-box;
 }
-.data{
+.dataBalance,
+.dataIncome,
+.dataExpense {
   border-radius: 10px;
-  padding: 10px;
+  padding: 5px 35px 5px 35px;
   margin-right: 20px;
-  background-color: rgba(192, 247, 137, 0.648);
-  border:1px solid rgba(59, 250, 142, 0.959);
 }
-
-
+.dataBalance {
+  background-color: rgba(106, 253, 118, 0.562);
+  border: 1px solid rgba(6, 248, 99, 0.993);
+}
+.dataIncome {
+  background-color: rgba(170, 231, 233, 0.61);
+  border: 1px solid rgba(24, 179, 226, 0.959);
+}
+.dataExpense {
+  background-color: rgba(226, 166, 194, 0.226);
+  border: 1px solid rgba(238, 6, 149, 0.959);
+}
+.change {
+  display: flex;
+  justify-content: space-between;
+}
+label {
+  color: rgb(160, 152, 152);
+  margin-bottom: 10px;
+}

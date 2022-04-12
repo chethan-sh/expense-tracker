@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
-import {IheadindgProps} from './interfaces'
+import React, { Component } from "react";
+import { IheadindgProps } from "./interfaces";
 
-export class Heading extends Component<IheadindgProps,{}> {
+export class Heading extends Component<IheadindgProps, {}> {
   render() {
-      const {headingtext} = this.props;
-    return (
-      <div className='heading'>{headingtext}</div>
-    )
+    const { headingtext } = this.props;
+    return <div className="heading">{headingtext}</div>;
   }
 }
