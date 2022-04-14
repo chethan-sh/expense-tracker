@@ -61,7 +61,7 @@ export class ExpenseTracker extends Component<{}, IExpenseTrackerState> {
         <div className="expenseTracker">
           <h3>Expense Tracker</h3>
           <TrackerData balance={balance} income={income} expense={expense} />
-          <div className="change">
+          <div className="body">
             <InputTransactionDetailes
               balance={balance}
               addTransactionDetails={this.addTransactionDetails}

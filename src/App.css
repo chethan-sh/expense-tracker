@@ -8,11 +8,12 @@
 .expenseTracker h3 {
   margin: 0px;
   text-align: left;
-  padding: 30px;
-  width: 90%;
-  color: rgba(71, 62, 62, 0.623);
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: rgba(167, 146, 175, 0.219);
+  background-color: black;
   border: 1px solid rgb(221, 213, 213);
   border-radius: 8px;
 }
@@ -93,18 +94,18 @@
   margin-right: 20px;
 }
 .dataBalance {
-  background-color: rgba(106, 253, 118, 0.562);
-  border: 1px solid rgba(6, 248, 99, 0.993);
+  background-color: #ecfccb;
+  border: 1px solid #84cc16;
 }
 .dataIncome {
-  background-color: rgba(170, 231, 233, 0.61);
-  border: 1px solid rgba(24, 179, 226, 0.959);
+  background-color: #cffafe;
+  border: 1px solid #06b6d4;
 }
 .dataExpense {
-  background-color: rgba(226, 166, 194, 0.226);
-  border: 1px solid rgba(238, 6, 149, 0.959);
+  background-color: #ede9fe;
+  border: 1px solid #7c3aed;
 }
-.change {
+.body {
   display: flex;
   justify-content: space-between;
 }

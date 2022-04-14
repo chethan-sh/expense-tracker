@@ -1,11 +1,7 @@
 import { Component } from "react";
 import "../App.css";
+import { IData } from "./interfaces";
 
-interface IData {
-  classname: string;
-  value: number;
-  type: string;
-}
 export class Data extends Component<IData, {}> {
   render() {
     const { value, type, classname } = this.props;

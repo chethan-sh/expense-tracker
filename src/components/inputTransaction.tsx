@@ -1,41 +1,48 @@
 import React, { Component } from "react";
-import { ITransactionItem } from "./interfaces";
 import { Heading } from "./heading";
-
+import { ITransactionItem } from "./interfaces";
 const amountType = {
   credit: "credit",
   debit: "debit"
 };
+
 interface Iinput {
   balance: number;
   addTransactionDetails: (e: ITransactionItem) => void;
 }
 export class InputTransactionDetailes extends Component<
   Iinput,
-  ITransactionItem
+  { transactionType: string }
 > {
+  inputRef: {
+    inputName: React.RefObject<HTMLInputElement>;
+    inputAmount: React.RefObject<HTMLInputElement>;
+  };
+
   constructor(props: Iinput) {
     super(props);
-    this.handleOnchange = this.handleOnchange.bind(this);
     this.clearInputFields = this.clearInputFields.bind(this);
+    this.inputRef = {
+      inputName: React.createRef(),
+      inputAmount: React.createRef()
+    };
     this.state = {
-      transactionType: amountType.credit,
-      transactionAmount: 0,
-      transactionName: ""
+      transactionType: amountType.credit
     };
   }
 
   clearInputFields() {
-    this.setState({ transactionAmount: 0, transactionName: "" });
+    (this.inputRef.inputName.current as HTMLInputElement).value = "";
+    (this.inputRef.inputAmount.current as HTMLInputElement).value = "";
   }
 
   toggleTransactionType = () => {
     this.setState((prevState) => {
       let transactionType;
       if (prevState.transactionType === amountType.credit) {
-        transactionType = "debit";
+        transactionType = amountType.debit;
       } else {
-        transactionType = "credit";
+        transactionType = amountType.credit;
       }
       return { transactionType: transactionType };
     });
@@ -47,34 +54,29 @@ export class InputTransactionDetailes extends Component<
     transactionName
   }: ITransactionItem) {
     const { balance }: { balance: number } = this.props;
-    let validationStatus: boolean = false;
+    let errorMsg;
     if (transactionName === "" || !isNaN(+transactionName)) {
-      alert("Invalid Transaction Name");
+      errorMsg = "Invalid Transaction Name";
     } else if (transactionAmount <= 0) {
-      alert("Invalid Transaction Amount");
+      errorMsg = "Invalid Transaction Amount";
     } else if (
       transactionType === amountType.debit &&
       balance - transactionAmount < 0
     ) {
-      alert("Low Balance Cant add Transaction");
+      errorMsg = "Low Balance Cant add Transaction";
     } else {
-      validationStatus = true;
+      return true;
     }
-    return validationStatus;
-  }
-
-  handleOnchange(e: React.ChangeEvent<HTMLInputElement>) {
-    let inputElement = e.currentTarget;
-    let value = inputElement.value;
-    if (inputElement.name === "transactionName") {
-      this.setState({ transactionName: value });
-    } else if (inputElement.name === "transactionAmount") {
-      this.setState({ transactionAmount: +value });
-    }
+    alert(errorMsg);
+    return false;
   }
 
   getTransactionDetails() {
-    const { transactionType, transactionName, transactionAmount } = this.state;
+    const { transactionType } = this.state;
+    const transactionName = (this.inputRef.inputName
+      .current as HTMLInputElement).value;
+    const transactionAmount = +(this.inputRef.inputAmount
+      .current as HTMLInputElement).value;
     const transactionItem = {
       transactionType,
       transactionAmount,
@@ -87,35 +89,31 @@ export class InputTransactionDetailes extends Component<
     const transactionItem: ITransactionItem = this.getTransactionDetails();
     if (this.isValidationSuccessful(transactionItem)) {
       this.props.addTransactionDetails(transactionItem);
+      this.clearInputFields();
     }
-    this.clearInputFields();
   }
 
   render() {
-    const { transactionType, transactionName, transactionAmount } = this.state;
+    const { transactionType } = this.state;
     return (
       <>
         <div className="inputTransactionDetails">
           <Heading headingtext="Add transaction" />
           <label>Transaction Name</label>
           <input
+            ref={this.inputRef.inputName}
             name="transactionName"
-            value={transactionName}
+            defaultValue=""
             placeholder="Name"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              this.handleOnchange(e)
-            }
             className="input"
             type="text"
           />
           <label>Transaction Amount</label>
           <input
+            ref={this.inputRef.inputAmount}
+            min={0}
             name="transactionAmount"
-            value={transactionAmount}
             placeholder="transaction amount"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              this.handleOnchange(e)
-            }
             className="input"
             type="number"
           />

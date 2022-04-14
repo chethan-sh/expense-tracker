@@ -18,3 +18,8 @@ export interface IheadindgProps {
 export interface ITransactionHistoryProps {
   transactionList: ITransactionItem[];
 }
+export interface IData {
+  classname: string;
+  value: number;
+  type: string;
+}
